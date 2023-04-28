@@ -2,6 +2,7 @@
 #include <sdk/calc/calc.hpp>
 #include <sdk/os/lcd.hpp>
 #include <sdk/os/debug.hpp>
+#include <sdk/os/file.hpp>
 
 #include <string.h>
 #include <stdlib.h>
@@ -107,6 +108,48 @@ void main() {
 	
 	//use this command to actually update the screen 
 	LCD_Refresh();
+
+	fillScreen(color(0, 0, 0));
+	Debug_Printf(0, 0, false, 0, "Loading JVM Class");
+	LCD_Refresh();
+
+	// Load class
+
+	char filename[] = "\\fls0\\jvm\\HelloWorld.class";
+
+	int32_t class_file = open(filename, OPEN_READ);	
+	
+	if(class_file < 0) {
+		Debug_Printf(0, 1, true, 0, "Can't load %s", filename);
+	} else {
+
+		struct stat class_file_stat;
+
+		fstat(class_file, &class_file_stat);
+
+		// dynamically allocate space for bc (bytecode) class in heap
+		uint8_t *bc = (uint8_t *)malloc(class_file_stat.fileSize);
+
+		if(!bc) {
+			Debug_Printf(0, 1, true, 0, "Class stat is null ?");
+		} else {
+			int32_t bytes_read  = read(class_file, bc, class_file_stat.fileSize);
+
+			if (bytes_read  < 0) {
+				Debug_Printf(0, 1, true, 0, "Empty file : %d", bytes_read);
+			} else {
+				Debug_Printf(0, 1, false, 0, "Read %d bytes of class - OK", bytes_read );
+
+			}
+		}
+
+		close(class_file);
+	}
+
+	
+
+	LCD_Refresh();
+	
 
 	//Example for getKey
 	while(true){
