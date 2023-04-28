@@ -7,13 +7,15 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "pvm/h/main.h"
+
 /*
  * Fill this section in with some information about your app.
  * All fields are optional - so if you don't need one, take it out.
  */
 APP_NAME("Java VM")
 APP_DESCRIPTION("A small JVM")
-APP_AUTHOR("Pho")
+APP_AUTHOR("PC")
 APP_VERSION("1.0.0")
 
 extern "C"
@@ -140,6 +142,10 @@ void main() {
 			} else {
 				Debug_Printf(0, 1, false, 0, "Read %d bytes of class - OK", bytes_read );
 
+				char class_name[] = "HelloWorld";
+				char *kvm_argv[1] = { class_name };
+    			int kvm_argc = 1;
+				StartJVM(kvm_argc, kvm_argv);
 			}
 		}
 
@@ -151,6 +157,20 @@ void main() {
 	LCD_Refresh();
 	
 
+	float f_a = 3.14159f;
+    float f_b = 2.71828f;
+    float f_c = f_a + f_b;
+    float f_d = f_a - f_b;
+    float f_e = f_a * f_b;
+    float f_f = f_a / f_b;
+
+    Debug_Printf(0, 5, false, 0, "a + b = %f\n", f_c);
+    Debug_Printf(0, 6, false, 0, "a - b = %f\n", f_d);
+    Debug_Printf(0, 7, false, 0, "a * b = %f\n", f_e);
+    Debug_Printf(0, 8, false, 0, "a / b = %f\n", f_f);
+
+	LCD_Refresh();
+	
 	//Example for getKey
 	while(true){
 		uint32_t key1, key2;	//First create variables

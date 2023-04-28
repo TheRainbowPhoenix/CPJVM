@@ -23,7 +23,9 @@ OBJCOPY:=sh4-elf-objcopy
 
 AS_SOURCES:=$(wildcard *.s)
 CC_SOURCES:=$(wildcard *.c)
+CC_SOURCES +=$(shell find "pvm" -name '*.c')
 CXX_SOURCES:=$(wildcard *.cpp)
+CXX_SOURCES +=$(shell find "pvm" -name '*.cpp')
 OBJECTS:=$(AS_SOURCES:.s=.o) $(CC_SOURCES:.c=.o) $(CXX_SOURCES:.cpp=.o)
 
 APP_ELF:=$(APP_NAME).hhk
