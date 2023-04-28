@@ -1,0 +1,9 @@
+Subdirectory        Description
+------------        -----------
+api                 Contains the Java library source code that is provided with the release.
+bin                 Contains all the binary executables and compiled Java library classes.
+build               Contains makefiles for building the KVM.
+doc                 Contains documentation.
+jam                 Contains the source code of the optional Java Application Manager (JAM) component that is provided with the KVM.
+kvm                 Contains the source code of the KVM.
+tools               Contains the source code for a number of tools (JavaCodeCompact, preverifier, KDWP Debug Proxy) that are provided with the release.

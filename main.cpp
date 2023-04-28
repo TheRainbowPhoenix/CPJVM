@@ -4,6 +4,7 @@
 #include <sdk/os/debug.hpp>
 
 #include <string.h>
+#include <stdlib.h>
 
 /*
  * Fill this section in with some information about your app.
@@ -94,6 +95,15 @@ void main() {
     char arr2[10] = {1,2,3,4,6};
     int cmp = memcmp(arr1, arr2, sizeof(arr1));
     Debug_Printf(0,20,false,0,"memcmp: %d\n", cmp);
+
+    char a_str1[] = "1234";
+    char a_str2[] = "5678";
+    int num1, num2, sum;
+
+    num1 = atoi(a_str1);
+    num2 = atoi(a_str2);
+    sum = num1 + num2;
+    Debug_Printf(0,21,false,0,"sum = %d\n", sum);
 	
 	//use this command to actually update the screen 
 	LCD_Refresh();
