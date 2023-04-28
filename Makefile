@@ -1,6 +1,6 @@
 # run `make all` to compile the .hhk and .bin file, use `make` to compile only the .bin file.
 # The .hhk file is the original format, the bin file is a newer format.
-APP_NAME:=app_template
+APP_NAME:=jvm
 
 ifndef SDK_DIR
 $(error You need to define the SDK_DIR environment variable, and point it to the sdk/ folder)
@@ -10,13 +10,13 @@ AS:=sh4-elf-as
 AS_FLAGS:=
 
 CC:=sh4-elf-gcc
-CC_FLAGS:=-ffreestanding -fshort-wchar -Wall -Wextra -O2 -I $(SDK_DIR)/include/
+CC_FLAGS:=-ffreestanding -fshort-wchar -Wall -Wextra -O2 -I $(SDK_DIR)/include/ -I $(SDK_DIR)/newlib/sh-elf/include/
 
 CXX:=sh4-elf-g++
-CXX_FLAGS:=-ffreestanding -fno-exceptions -fno-rtti -fshort-wchar -Wall -Wextra -O2 -I $(SDK_DIR)/include/ -m4a-nofpu
+CXX_FLAGS:=-ffreestanding -fno-exceptions -fno-rtti -fshort-wchar -Wall -Wextra -O2 -I $(SDK_DIR)/include/ -m4a-nofpu -I $(SDK_DIR)/newlib/sh-elf/include/
 
-LD:=sh4-elf-ld
-LD_FLAGS:=-nostdlib --no-undefined
+LD:=sh4-elf-gcc
+LD_FLAGS:=-nostartfiles -m4-nofpu -Wno-undef -L$(SDK_DIR)/newlib/sh-elf/lib/ -lm -lc
 
 READELF:=sh4-elf-readelf
 OBJCOPY:=sh4-elf-objcopy
@@ -46,7 +46,7 @@ $(APP_ELF): $(OBJECTS) $(SDK_DIR)/sdk.o linker_hhk.ld
 	$(OBJCOPY) --set-section-flags .hollyhock_version=contents,strings,readonly $(APP_ELF) $(APP_ELF)
 
 $(APP_BIN): $(OBJECTS) $(SDK_DIR)/sdk.o linker_bin.ld
-	$(LD) --oformat binary -T linker_bin.ld -o $@ $(LD_FLAGS) $(OBJECTS) $(SDK_DIR)/sdk.o
+	$(LD) -Wl,--oformat=binary -T linker_bin.ld -o $@ $(LD_FLAGS) $(OBJECTS) $(SDK_DIR)/sdk.o
 
 # We're not actually building sdk.o, just telling the user they need to do it
 # themselves. Just using the target to trigger an error when the file is
