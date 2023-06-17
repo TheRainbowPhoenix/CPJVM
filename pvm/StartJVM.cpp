@@ -33,6 +33,35 @@ void KVM_Cleanup()
     */
 }
 
+
+/*=========================================================================
+ * FUNCTION:      KVM_Start
+ * TYPE:          private operation
+ * OVERVIEW:      Initialize everything.  This operation is called
+ *                when the VM is launched.
+ * INTERFACE:
+ *   parameters:  command line parameters
+ *   returns:     zero if everything went well, non-zero otherwise
+ *=======================================================================*/
+
+int KVM_Start(int argc, char* argv[])
+{
+    ARRAY arguments;
+    INSTANCE_CLASS mainClass = NULL;
+    volatile int returnValue = 0; /* Needed to make compiler happy */
+
+    return returnValue;
+}
+
+/*=========================================================================
+ * FUNCTION:      StartJVM
+ * TYPE:          public global operation
+ * OVERVIEW:      Boots up the virtual machine and executes 'main'.
+ * INTERFACE:
+ *   parameters:  command line arguments
+ *   returns:     zero if everything went fine, non-zero otherwise.
+ *=======================================================================*/
+
 int StartJVM(int argc, char* argv[])
 {
     volatile int returnValue = 0;
@@ -43,9 +72,8 @@ int StartJVM(int argc, char* argv[])
         return -1;
     }
 
-
     AlertUser("TODO: KVM_Start");
-    // returnValue = KVM_Start(argc, argv);
+    returnValue = KVM_Start(argc, argv);
     // KVM_Cleanup();
     return returnValue;
 }

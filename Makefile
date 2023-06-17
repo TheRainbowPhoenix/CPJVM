@@ -38,7 +38,7 @@ hhk: $(APP_ELF) Makefile
 all: $(APP_ELF) $(APP_BIN) Makefile
 
 clean:
-	rm -f $(OBJECTS) $(APP_ELF) $(APP_BIN)
+	rm -f *.o $(APP_ELF) $(APP_BIN)
 
 $(APP_ELF): $(OBJECTS) $(SDK_DIR)/sdk.o linker_hhk.ld
 	$(LD) -T linker_hhk.ld -o $@ $(LD_FLAGS) $(OBJECTS) $(SDK_DIR)/sdk.o

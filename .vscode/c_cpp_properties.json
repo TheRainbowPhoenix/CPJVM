@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "Linux",
+            "name": "Classpad",
             "includePath": [
                 "${workspaceFolder}/**",
                 "/opt/cross/hollyhock-2/sdk/include/**",
@@ -21,7 +21,19 @@
                 "-m4a-nofpu",
                 "-I $(SDK_DIR)/newlib/sh-elf/include/"
             ],
-            "configurationProvider": "ms-vscode.makefile-tools"
+            "browse": {
+                "limitSymbolsToIncludedHeaders": false,
+                "databaseFilename": "${workspaceFolder}/.vscode/db/browse.vc.db",
+                "path": [
+                    "${default}",
+                    "/opt/cross/hollyhock-2/sdk/include/sdk"
+                ]
+            },
+            "configurationProvider": "ms-vscode.makefile-tools",
+            "cStandard": "c17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64",
+            "mergeConfigurations": true
         }
     ],
     "version": 4
