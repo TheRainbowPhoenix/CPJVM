@@ -2,7 +2,7 @@
 #include <sdk/os/lcd.hpp>
 #include <stddef.h>
 
-#include "./common/h/global.h"
+#include <global.h>
 #include "./h/messages.h"
 
 void AlertUser(const char *message) {
@@ -71,6 +71,6 @@ int StartJVM(int argc, char *argv[]) {
 
   AlertUser("TODO: KVM_Start");
   returnValue = KVM_Start(argc, argv);
-  // KVM_Cleanup();
+  KVM_Cleanup();
   return returnValue;
 }

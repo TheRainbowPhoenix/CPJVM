@@ -69,7 +69,7 @@ You will generally need to provide a new version of <code class="cCode">main.c</
 Each port must define the functions given below (see <code class="cCode">VmCommon/h/runtime.h</code>). They may be defined as either macros or as C code. Traditionally, the C code is placed in a file named <code class="cCode">VmPort/src/runtime_md.c</code>
 </p>
 <ul class="pBullet1"><a name="wp419638"> </a><div class="pBullet1"><li><code class="cCode">void AlertUser(const char* message)<br /></code>Alert the user that something serious has happened. This function call usually precedes a fatal error.</li></div>
-<a name="wp419677"> </a><div class="pBullet1Plus"><li><code class="cCode">cell *allocateHeap(long *sizeptr, void **realresultptr)<br /></code>Create a heap whose size (in bytes) is approximately the long value <code class="cCode">*sizeptr</code>. The heap must begin at an address that is a multiple of 4. The address of the heap is returned as the value of this function. The actual size of the heap (in bytes) is returned in <code class="cCode">*sizeptr</code>. The value placed into <code class="cCode">*realresultptr</code> is used as the argument to <code class="cCode">freeHeap</code> when freeing the heap.</li></div>
+<a name="wp419677"> </a><div class="pBullet1Plus"><li><code class="cCode">jcell *allocateHeap(long *sizeptr, void **realresultptr)<br /></code>Create a heap whose size (in bytes) is approximately the long value <code class="cCode">*sizeptr</code>. The heap must begin at an address that is a multiple of 4. The address of the heap is returned as the value of this function. The actual size of the heap (in bytes) is returned in <code class="cCode">*sizeptr</code>. The value placed into <code class="cCode">*realresultptr</code> is used as the argument to <code class="cCode">freeHeap</code> when freeing the heap.</li></div>
 <a name="wp426089"> </a><p class="pIndented1">
 For most ports, <code class="cCode">*realresultptr</code> will be set to the actual value returned by the native space allocation function. If this value is not a multiple of 4, it is rounded up to the next multiple of 4, and <code class="cCode">*sizeptr</code> is decreased by 4.
 </p>
@@ -110,7 +110,7 @@ Asynchronous native functions. If your port supports the use of asynchronous nat
 <b>Note &#8211;</b>  The interfaces for functions <code class="cCode">enterSystemCriticalSection()</code> and <code class="cCode">exitSystemCriticalSection()</code> are defined in <code class="cCode">VmCommon/h/thread.h</code>.
 <hr class="pHr"/></div>
 <a name="wp433174"> </a><p class="pBody">
-These functions are further described in <a  href="portingNative.html#wp433595">§11.4</a>.
+These functions are further described in <a  href="portingNative.html#wp433595">ï¿½11.4</a>.
 </p>
 <a name="wp427856"> </a><h2 class="pHeading1">
 4.4	Required C library functions

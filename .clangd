@@ -1,0 +1,8 @@
+CompileFlags:
+  Add: [
+      "-I/opt/cross/hollyhock-2/sdk/include/",
+      "-I/opt/cross/hollyhock-2/sdk/newlib/sh-elf/include/",
+      "-I/workspaces/CPJVM/pvm/VmCommon/h/"
+      "-I/workspaces/CPJVM/pvm/VmSkel/h/"
+      "-I/workspaces/CPJVM/pvm/VmExtra/h/"
+  ]

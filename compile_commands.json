@@ -1,0 +1,7 @@
+[
+    {
+      "directory": ".",
+      "command": "/usr/local/bin/sh4-elf-g++ -c main.cpp -o main.o -ffreestanding -fno-exceptions -fno-rtti -fshort-wchar -Wall -Wextra -O2 -I /opt/cross/hollyhock-2/sdk/include/ -m4a-nofpu -I /opt/cross/hollyhock-2/sdk/newlib/sh-elf/include/",
+      "file": "main.cpp"
+    }
+]

@@ -414,7 +414,7 @@ To deal with the fact that heap-allocated objects in the KVM can move, the garba
 <a name="wp435290"> </a><p class="pBody">
 The memory location that contains the address of the object must not itself be in the Java heap. In general, it is the address of a variable (for global roots) or the address of a location on the C stack (for temporary roots).
 </p>
-<ul class="pBullet1"><a name="wp435302"> </a><div class="pBullet1"><li>If the object is possibly in the Java heap, then the memory location that contains the address of the object must be registered with the garbage collector. It can either be a temporary root (see <a  href="portingNative.html#wp435798">§11.2.8.4</a>) or a permanent root (see <a  href="portingNative.html#wp435490">§11.2.8.5</a>).</li></div>
+<ul class="pBullet1"><a name="wp435302"> </a><div class="pBullet1"><li>If the object is possibly in the Java heap, then the memory location that contains the address of the object must be registered with the garbage collector. It can either be a temporary root (see <a  href="portingNative.html#wp435798">ï¿½11.2.8.4</a>) or a permanent root (see <a  href="portingNative.html#wp435490">ï¿½11.2.8.5</a>).</li></div>
 <a name="wp435797"> </a><div class="pBullet1Last"><li>If the object is not in the Java heap, then the handle does not need to be registered with the garbage collector.</li></div>
 </ul>
 <a name="wp435851"> </a><p class="pBody">
@@ -504,7 +504,7 @@ CODE&#160;EXAMPLE&#160;7 	Creating a global root
 </div>
 <div class="pPreformatted"><pre class="pPreformatted">
 <code class="cCode">variable = &lt;value&gt;</code><a name="wp439463"> </a>
-makeGlobalRoot(&amp;(cell **)variable);<a name="wp439449"> </a>
+makeGlobalRoot(&amp;(jcell **)variable);<a name="wp439449"> </a>
 </pre></div>
 <a name="wp435521"> </a><p class="pBody">
 This code ensures that the garbage collector knows that the specified variable contains a value that must be protected from garbage collection. If the garbage collector moves the object, the variable is updated to point to the new value.
@@ -534,7 +534,7 @@ Implementations of these three functions for Windows and for Unix are provided. 
 11.2.8.7	Two-space Cheney garbage collector
 </h4>
 <a name="wp435629"> </a><p class="pBody">
-The file <code class="cCode">collectorDebug.c</code> (see <a  href="portingNative.html#wp432616">§11.2.8.6</a>) also includes an implementation of a two-space non-debugging Cheney garbage collector. You get this implementation by setting the compiler flag <code class="cCode">CHENEY_TWO_SPACE</code> to a non-zero value.
+The file <code class="cCode">collectorDebug.c</code> (see <a  href="portingNative.html#wp432616">ï¿½11.2.8.6</a>) also includes an implementation of a two-space non-debugging Cheney garbage collector. You get this implementation by setting the compiler flag <code class="cCode">CHENEY_TWO_SPACE</code> to a non-zero value.
 </p>
 <a name="wp435614"> </a><p class="pBody">
 The Cheney collector is smaller and faster than the standard garbage collector. However, it uses twice as much heap space. If your implementations has a lot of available memory, but needs a faster garbage collector, you might consider using this garbage collector.

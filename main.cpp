@@ -159,8 +159,6 @@ extern "C" void main()
 			}
 		}
 
-		De
-
 		close(class_file);
 	}
 

@@ -27,7 +27,10 @@
                 "path": [
                     "${default}",
                     "pvm",
-                    "/opt/cross/hollyhock-2/sdk/include/sdk"
+                    "/opt/cross/hollyhock-2/sdk/include/sdk",
+                    "/workspaces/CPJVM/pvm/VmCommon/h/",
+                    "/workspaces/CPJVM/pvm/VmSkel/h/",
+                    "/workspaces/CPJVM/pvm/VmExtra/h/"
                 ]
             },
             "configurationProvider": "ms-vscode.makefile-tools",
