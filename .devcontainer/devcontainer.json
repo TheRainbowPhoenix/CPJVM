@@ -48,5 +48,9 @@
 				"llvm-vs-code-extensions.vscode-clangd"
 			]
 		}
-	}
+	},
+	"containerEnv": {
+		// extensions to preload before other extensions
+	   "TMPDIR": "/home/dev/tmp/"
+	 }
 }
