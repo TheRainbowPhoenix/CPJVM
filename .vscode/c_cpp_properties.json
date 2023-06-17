@@ -35,6 +35,23 @@
             "cppStandard": "gnu++14",
             "intelliSenseMode": "linux-gcc-x64",
             "mergeConfigurations": true
+        },
+        {
+            "name": "Native (debug)",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${default}"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerPath": "/usr/bin/g++",
+            "compileCommands": "${workspaceFolder}/compile_commands.json"
         }
     ],
     "version": 4

@@ -1,13 +1,13 @@
-#include <sdk/os/lcd.hpp>
 #include <sdk/os/debug.hpp>
+#include <sdk/os/lcd.hpp>
 #include <stddef.h>
 
-#include "./h/messages.h"
 #include "./common/h/global.h"
+#include "./h/messages.h"
 
-void AlertUser(const char* message) {
-    Debug_Printf(0,10,false,0,"%s",message);
-    LCD_Refresh();
+void AlertUser(const char *message) {
+  Debug_Printf(0, 10, false, 0, "%s", message);
+  LCD_Refresh();
 }
 
 /*=========================================================================
@@ -20,20 +20,18 @@ void AlertUser(const char* message) {
  *   returns:     <nothing>
  *=======================================================================*/
 
-void KVM_Cleanup()
-{
-    /*
-    FinalizeVM();
-    FinalizeInlineCaching();
-    FinalizeNativeCode();
-    FinalizeJavaSystemClasses();
-    FinalizeClassLoading();
-    FinalizeMemoryManagement();
-    DestroyROMImage();
-    FinalizeHashtables();
-    */
+void KVM_Cleanup() {
+  /*
+  FinalizeVM();
+  FinalizeInlineCaching();
+  FinalizeNativeCode();
+  FinalizeJavaSystemClasses();
+  FinalizeClassLoading();
+  FinalizeMemoryManagement();
+  DestroyROMImage();
+  FinalizeHashtables();
+  */
 }
-
 
 /*=========================================================================
  * FUNCTION:      KVM_Start
@@ -45,13 +43,12 @@ void KVM_Cleanup()
  *   returns:     zero if everything went well, non-zero otherwise
  *=======================================================================*/
 
-int KVM_Start(int argc, char* argv[])
-{
-    ARRAY arguments;
-    INSTANCE_CLASS mainClass = NULL;
-    volatile int returnValue = 0; /* Needed to make compiler happy */
+int KVM_Start(int argc, char *argv[]) {
+  ARRAY arguments;
+  INSTANCE_CLASS mainClass = NULL;
+  volatile int returnValue = 0; /* Needed to make compiler happy */
 
-    return returnValue;
+  return returnValue;
 }
 
 /*=========================================================================
@@ -63,18 +60,17 @@ int KVM_Start(int argc, char* argv[])
  *   returns:     zero if everything went fine, non-zero otherwise.
  *=======================================================================*/
 
-int StartJVM(int argc, char* argv[])
-{
-    volatile int returnValue = 0;
+int StartJVM(int argc, char *argv[]) {
+  volatile int returnValue = 0;
 
-    /* Ensure that we have a class to run */
-    if (argc <= 0 || argv[0] == NULL) {
-        AlertUser(KVM_MSG_MUST_PROVIDE_CLASS_NAME);
-        return -1;
-    }
+  /* Ensure that we have a class to run */
+  if (argc <= 0 || argv[0] == NULL) {
+    AlertUser(KVM_MSG_MUST_PROVIDE_CLASS_NAME);
+    return -1;
+  }
 
-    AlertUser("TODO: KVM_Start");
-    returnValue = KVM_Start(argc, argv);
-    // KVM_Cleanup();
-    return returnValue;
+  AlertUser("TODO: KVM_Start");
+  returnValue = KVM_Start(argc, argv);
+  // KVM_Cleanup();
+  return returnValue;
 }
