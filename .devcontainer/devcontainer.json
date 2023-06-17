@@ -28,9 +28,22 @@
 	"remoteUser": "dev",
 	"customizations": {
 		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"editor.formatOnSave": true,
+				"clang-format.executable": "/usr/bin/clang-format-13",
+				"clang-format.fallbackStyle": "none",
+				"clang-format.assumeFilename": "${file}",
+				"clang-format.style": "file",
+				"editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+				"clangd.path": "/usr/bin/clangd-13",
+				"C_Cpp.clang_format_fallbackStyle": "none",
+				"C_Cpp.clang_format_path": "/usr/bin/clang-format-13",
+				"C_Cpp.clang_format_style": "file",
+				"C_Cpp.formatting": "clangFormat"
+			},
 			"extensions": [
-				"ms-vscode.cpptools-themes",
-				"ms-vscode.cpptools-extension-pack",
 				"ms-vscode.makefile-tools",
 				"llvm-vs-code-extensions.vscode-clangd"
 			]

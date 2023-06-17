@@ -2,7 +2,7 @@ FROM pho3be/sh4devenvgitpod:latest
 
 USER root
 
-RUN apt-get update && apt-get install -y nano vim
+RUN apt-get update && apt-get install -y nano vim clangd-13 clang-format-13
 
 USER dev
 
