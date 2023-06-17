@@ -3,6 +3,7 @@
 #include <stddef.h>
 
 #include "./h/messages.h"
+#include "./common/h/global.h"
 
 void AlertUser(const char* message) {
     Debug_Printf(0,10,false,0,"%s",message);

@@ -26,6 +26,7 @@
                 "databaseFilename": "${workspaceFolder}/.vscode/db/browse.vc.db",
                 "path": [
                     "${default}",
+                    "pvm",
                     "/opt/cross/hollyhock-2/sdk/include/sdk"
                 ]
             },

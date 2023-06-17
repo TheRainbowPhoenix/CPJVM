@@ -25,7 +25,7 @@
  *=======================================================================*/
 
 /* The performs per-machine initialization */
-#include <machine_md.h>
+#include "../../VmSH/h/machine_md.h"
 
 /*=========================================================================
  * Global compile-time constants and typedefs
