@@ -20,19 +20,9 @@
  * other additional global variable declarations in other files.
  *=======================================================================*/
 
-// #include <setjmp.h>
-
-typedef struct {
-  unsigned long eax;
-  unsigned long ebx;
-  unsigned long ecx;
-  unsigned long edx;
-  unsigned long esi;
-  unsigned long edi;
-  unsigned long ebp;
-  unsigned long esp;
-  unsigned long eip;
-} jmp_buf[1];
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /*=========================================================================
  * System include files
@@ -669,3 +659,6 @@ extern THROWABLE_SCOPE ThrowableScope;
     extern int varName;
 FOR_EACH_TRACE_FLAG(DECLARE_TRACE_VAR_EXTERNAL)
 
+#ifdef __cplusplus
+}
+#endif

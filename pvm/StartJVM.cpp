@@ -5,33 +5,11 @@
 #include <global.h>
 #include "./h/messages.h"
 
-void AlertUser(const char *message) {
-  Debug_Printf(0, 10, false, 0, "%s", message);
+void CPPAlertUser(const char *message) {
+  Debug_Printf(0, 10, 0, 0, "%s", message);
   LCD_Refresh();
 }
 
-/*=========================================================================
- * FUNCTION:      KVM_Cleanup
- * TYPE:          private operation
- * OVERVIEW:      Clean up everything.  This operation is called
- *                when the VM is shut down.
- * INTERFACE:
- *   parameters:  <none>
- *   returns:     <nothing>
- *=======================================================================*/
-
-void KVM_Cleanup() {
-  /*
-  FinalizeVM();
-  FinalizeInlineCaching();
-  FinalizeNativeCode();
-  FinalizeJavaSystemClasses();
-  FinalizeClassLoading();
-  FinalizeMemoryManagement();
-  DestroyROMImage();
-  FinalizeHashtables();
-  */
-}
 
 /*=========================================================================
  * FUNCTION:      KVM_Start
@@ -48,6 +26,25 @@ int KVM_Start(int argc, char *argv[]) {
   INSTANCE_CLASS mainClass = NULL;
   volatile int returnValue = 0; /* Needed to make compiler happy */
 
+  TRY {
+    VM_START {
+        
+        /* If ROMIZING and RELOCATABLE_ROM */
+        CreateROMImage();
+
+        InitializeMemoryManagement();
+
+        /* Load the main application class */
+            /* If loading fails, we get a C level exception */
+            /* and control is transferred to the CATCH block below */
+            // mainClass = loadMainClass(argv[0]);
+    } VM_FINISH(value) {
+        returnValue = value;
+    } VM_END_FINISH
+  } CATCH(e) {
+    AlertUser("VM_START CRASH >:c !!");
+  } END_CATCH
+
   return returnValue;
 }
 
@@ -60,16 +57,16 @@ int KVM_Start(int argc, char *argv[]) {
  *   returns:     zero if everything went fine, non-zero otherwise.
  *=======================================================================*/
 
-int StartJVM(int argc, char *argv[]) {
+int StartPVM(int argc, char *argv[]) {
   volatile int returnValue = 0;
 
   /* Ensure that we have a class to run */
   if (argc <= 0 || argv[0] == NULL) {
-    AlertUser(KVM_MSG_MUST_PROVIDE_CLASS_NAME);
+    CPPAlertUser(KVM_MSG_MUST_PROVIDE_CLASS_NAME);
     return -1;
   }
 
-  AlertUser("TODO: KVM_Start");
+  CPPAlertUser("TODO: KVM_Start");
   returnValue = KVM_Start(argc, argv);
   KVM_Cleanup();
   return returnValue;

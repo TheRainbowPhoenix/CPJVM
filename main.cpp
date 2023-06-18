@@ -9,6 +9,8 @@
 
 #include "pvm/h/main.h"
 
+#include <global.h>
+
 /*
  * Fill this section in with some information about your app.
  * All fields are optional - so if you don't need one, take it out.
@@ -18,6 +20,8 @@ APP_DESCRIPTION("A small JVM")
 APP_AUTHOR("PC")
 APP_VERSION("1.0.0")
 
+// long RequestedHeapSize;
+char* UserClassPath;
 
 
 extern "C" void main()
@@ -152,10 +156,13 @@ extern "C" void main()
 			{
 				Debug_Printf(0, 1, false, 0, "Read %d bytes of class - OK", bytes_read);
 
+				RequestedHeapSize = DEFAULTHEAPSIZE;
+    			UserClassPath = ".";
+
 				char class_name[] = "HelloWorld";
 				char *kvm_argv[1] = {class_name};
 				int kvm_argc = 1;
-				StartJVM(kvm_argc, kvm_argv);
+				StartPVM(kvm_argc, kvm_argv);
 			}
 		}
 

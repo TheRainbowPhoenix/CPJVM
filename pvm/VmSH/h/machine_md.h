@@ -1,7 +1,9 @@
 //PC - based on VmUnix machine_md.h file
 
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <setjmp.h>
 
 #define DEFAULTHEAPSIZE 64*1024
 #define JAR_FILES_USE_STDIO 0
@@ -25,6 +27,9 @@
 #define ASYNCHRONOUS_NATIVE_FUNCTIONS 0 
 
 #define USE_KNI 0 // should be 1 later
+
+#define InitializeVM()
+#define FinalizeVM()
 
 typedef long long long64;   
 typedef unsigned long long ulong64;

@@ -12,7 +12,7 @@ AS:=sh4-elf-as
 AS_FLAGS:=
 
 CC:=sh4-elf-gcc
-CC_FLAGS:=-ffreestanding -fshort-wchar -Wall -Wextra -O2 -I $(SDK_DIR)/include/ -I $(SDK_DIR)/newlib/sh-elf/include/
+CC_FLAGS:=-ffreestanding -fshort-wchar -Wall -Wextra -O2 -I $(SDK_DIR)/include/ -I $(SDK_DIR)/newlib/sh-elf/include/ -I $(CWD)/pvm/VmCommon/h -I $(CWD)/pvm/VmSkel/h -I $(CWD)/pvm/VmExtra/h
 
 CXX:=sh4-elf-g++
 CXX_FLAGS:=-ffreestanding -fno-exceptions -fno-rtti -fshort-wchar -Wall -Wextra -O2 -fpermissive -I $(SDK_DIR)/include/ -m4a-nofpu -I $(SDK_DIR)/newlib/sh-elf/include/ -I $(CWD)/pvm/VmCommon/h -I $(CWD)/pvm/VmSkel/h -I $(CWD)/pvm/VmExtra/h
@@ -40,7 +40,7 @@ hhk: $(APP_ELF) Makefile
 all: $(APP_ELF) $(APP_BIN) Makefile
 
 clean:
-	rm -f *.o $(APP_ELF) $(APP_BIN)
+	rm -f *.o **/*.o $(APP_ELF) $(APP_BIN)
 
 $(APP_ELF): $(OBJECTS) $(SDK_DIR)/sdk.o linker_hhk.ld
 	$(LD) -T linker_hhk.ld -o $@ $(LD_FLAGS) $(OBJECTS) $(SDK_DIR)/sdk.o

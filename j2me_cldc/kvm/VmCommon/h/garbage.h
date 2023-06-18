@@ -57,6 +57,11 @@
  * to reflect the features of the 1.0.2/1.0.3 collector.
  *=======================================================================*/
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*=========================================================================
  * Include files
  *=======================================================================*/
@@ -629,3 +634,6 @@ extern void registerCleanup(INSTANCE_HANDLE, CleanupCallback);
 #define CLEANUP_ARRAY_GROW 3
 #endif
 
+#ifdef __cplusplus
+}
+#endif
